@@ -1,4 +1,6 @@
 package com.transit.other;
 
-public enum enumDriver {
+public enum  enumDriver{
+
+Brampton,Toronto,Missisauga,Hamilton;
 }

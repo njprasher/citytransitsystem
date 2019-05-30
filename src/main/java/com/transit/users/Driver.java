@@ -9,6 +9,9 @@ public class Driver extends User{
     private String driverBirth;
 
 
+    public Driver() {
+    }
+
     /**
      *
      * @param driverName Displays Name of the driver riding the bus ..
@@ -81,7 +84,7 @@ public class Driver extends User{
         setDriverPhone(driverPhone);
     }
 
-  /*  public enum getroute(){
-        return
+   /* public enum getroute(enum getroutes){
+        return getroute;
     }*/
 }

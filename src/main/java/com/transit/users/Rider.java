@@ -105,7 +105,8 @@ public class Rider extends User
         return card;
     }
 
-    public void setCard(Card card) {
+    public void setCard(Card card)
+    {
         this.card = card;
     }
 }
