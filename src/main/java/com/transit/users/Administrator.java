@@ -8,6 +8,12 @@ public class Administrator extends User
     public Administrator(){
 
     }
+
+    /**
+     *
+     * @param adminName display the name of administrator
+     * @param adminEmail display driver's email  
+     */
     public Administrator( String adminName,String adminEmail) {
         this.adminName = adminName;
         this.adminEmail = adminEmail;
