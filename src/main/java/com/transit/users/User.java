@@ -40,4 +40,9 @@ public abstract class User implements IDisplay
     public void setLoginStatus(String loginStatus) {
         this.loginStatus = loginStatus;
     }
+
+//    protected boolean verifyLogin(){
+//        return
+//    }
+
 }
