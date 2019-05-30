@@ -1,6 +1,7 @@
 package com.transit.users;
 
 public class Driver extends User{
+
     private String driverName;
     private String driverEmail;
     private  int driverPhone;
@@ -69,6 +70,10 @@ public class Driver extends User{
         this.driverBirth = driverBirth;
     }
 
+
+    // Functions of Driver Class
+
+
     public void updateProfile(String driverName, String driverEmail, int driverPhone)
     {
         setDriverName(driverName);
@@ -76,4 +81,7 @@ public class Driver extends User{
         setDriverPhone(driverPhone);
     }
 
+  /*  public enum getroute(){
+        return
+    }*/
 }
