@@ -12,5 +12,33 @@ public class Card
 
     protected boolean riderPass;
 
-    
+    public Card(int cardNumber, float balance, boolean riderPass) {
+        this.cardNumber = cardNumber;
+        this.balance = balance;
+        this.riderPass = riderPass;
+    }
+
+    public int getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(int cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
+    }
+
+    public boolean isRiderPass() {
+        return riderPass;
+    }
+
+    public void setRiderPass(boolean riderPass) {
+        this.riderPass = riderPass;
+    }
 }
