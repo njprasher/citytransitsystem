@@ -18,6 +18,12 @@ public class Rider extends User
     public Rider() {
     }
 
+    /**
+     *
+     * @param id Unique identification for every user
+     * @param password Set of characters, numbers and symbols to verify the user's authenticity when combined with user's id
+     * @param loginStatus holds the login status for every user
+     */
     public Rider(int id, String password, String loginStatus) {
         super(id, password, loginStatus);
     }
