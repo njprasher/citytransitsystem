@@ -11,16 +11,11 @@ public class Card
     }
 
     protected boolean riderPass;
-    protected int recentTicketId;
 
-    public Card() {
-    }
-
-    public Card(int cardNumber, float balance, boolean riderPass, int recentTicketId) {
+    public Card(int cardNumber, float balance, boolean riderPass) {
         this.cardNumber = cardNumber;
         this.balance = balance;
         this.riderPass = riderPass;
-        this.recentTicketId = recentTicketId;
     }
 
     public int getCardNumber() {
@@ -47,14 +42,6 @@ public class Card
         this.riderPass = riderPass;
     }
 
-    public int getRecentTicketId() {
-        return recentTicketId;
-    }
-
-    public void setRecentTicketId(int recentTicketId) {
-        this.recentTicketId = recentTicketId;
-    }
-
     public void loadFund()
     {
 
@@ -69,6 +56,6 @@ public class Card
     }
     public void lostCard()
     {
-
+        
     }
 }
