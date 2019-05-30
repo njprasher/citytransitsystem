@@ -25,6 +25,7 @@ public class Driver extends User{
         this.driverBirth = driverBirth;
 
 
+
     }
 
 
@@ -66,6 +67,13 @@ public class Driver extends User{
 
     public void setDriverBirth(String driverBirth) {
         this.driverBirth = driverBirth;
+    }
+
+    public void updateProfile(String driverName, String driverEmail, int driverPhone)
+    {
+        setDriverName(driverName);
+        setDriverEmail(driverEmail);
+        setDriverPhone(driverPhone);
     }
 
 }

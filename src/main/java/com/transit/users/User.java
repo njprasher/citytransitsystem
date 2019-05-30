@@ -19,6 +19,7 @@ public abstract class User implements IDisplay
 
     public int getId() {
         return id;
+
     }
 
     public void setId(int id) {
