@@ -5,7 +5,7 @@ public class Driver extends User{
     private String driverName;
     private String driverEmail;
     private  int driverPhone;
-    private int driverSalary;
+    private static int driverSalary;
     private String driverBirth;
 
 
