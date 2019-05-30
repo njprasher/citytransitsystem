@@ -5,9 +5,12 @@ public class Driver extends User{
     private String driverName;
     private String driverEmail;
     private  int driverPhone;
-    private int driverSalary;
+    private static int driverSalary;
     private String driverBirth;
 
+
+    public Driver() {
+    }
 
     /**
      *
@@ -81,7 +84,7 @@ public class Driver extends User{
         setDriverPhone(driverPhone);
     }
 
-  /*  public enum getroute(){
-        return
+   /* public enum getroute(enum getroutes){
+        return getroute;
     }*/
 }

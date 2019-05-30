@@ -1,16 +1,16 @@
 package com.transit.card;
 
+import com.transit.other.enumDriver;
+
 public class Card
 {
     protected int cardNumber;
     protected float balance;
-
-    enum categoryType
-    {
-        ADULT, STUDENT, SENIOR, YOUNG, CHILD
-    }
-
     protected boolean riderPass;
+
+    enumDriver enumDriver;
+
+
 
     public Card(int cardNumber, float balance, boolean riderPass) {
         this.cardNumber = cardNumber;
