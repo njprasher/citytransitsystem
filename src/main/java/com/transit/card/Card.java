@@ -41,4 +41,21 @@ public class Card
     public void setRiderPass(boolean riderPass) {
         this.riderPass = riderPass;
     }
+
+    public void loadFund()
+    {
+
+    }
+    public void loadPass()
+    {
+
+    }
+    public void changeType()
+    {
+
+    }
+    public void lostCard()
+    {
+        
+    }
 }
