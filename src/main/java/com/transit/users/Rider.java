@@ -9,7 +9,6 @@ public class Rider extends User
     private String riderName;
     private Date riderBirth;
     private int riderBalance;
-    private boolean riderPass;
     private String riderEmail;
     private int riderContact;
     private int recentTicketId;
@@ -23,11 +22,10 @@ public class Rider extends User
         super(id, password, loginStatus);
     }
 
-    public Rider(String riderName, Date riderBirth, int riderBalance, boolean riderPass, String riderEmail, int riderContact, int recentTicketId, int categoryId, Card card) {
+    public Rider(String riderName, Date riderBirth, int riderBalance, String riderEmail, int riderContact, int recentTicketId, int categoryId, Card card) {
         this.riderName = riderName;
         this.riderBirth = riderBirth;
         this.riderBalance = riderBalance;
-        this.riderPass = riderPass;
         this.riderEmail = riderEmail;
         this.riderContact = riderContact;
         this.recentTicketId = recentTicketId;
@@ -35,12 +33,11 @@ public class Rider extends User
         this.card = card;
     }
 
-    public Rider(int id, String password, String loginStatus, String riderName, Date riderBirth, int riderBalance, boolean riderPass, String riderEmail, int riderContact, int recentTicketId, int categoryId, Card card) {
+    public Rider(int id, String password, String loginStatus, String riderName, Date riderBirth, int riderBalance, String riderEmail, int riderContact, int recentTicketId, int categoryId, Card card) {
         super(id, password, loginStatus);
         this.riderName = riderName;
         this.riderBirth = riderBirth;
         this.riderBalance = riderBalance;
-        this.riderPass = riderPass;
         this.riderEmail = riderEmail;
         this.riderContact = riderContact;
         this.recentTicketId = recentTicketId;
@@ -70,14 +67,6 @@ public class Rider extends User
 
     public void setRiderBalance(int riderBalance) {
         this.riderBalance = riderBalance;
-    }
-
-    public boolean isRiderPass() {
-        return riderPass;
-    }
-
-    public void setRiderPass(boolean riderPass) {
-        this.riderPass = riderPass;
     }
 
     public String getRiderEmail() {
