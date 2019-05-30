@@ -15,5 +15,108 @@ public class Rider extends User
     private int recentTicketId;
     private int categoryId;
     private Card card;
-    
+
+    public Rider() {
+    }
+
+    public Rider(int id, String password, String loginStatus) {
+        super(id, password, loginStatus);
+    }
+
+    public Rider(String riderName, Date riderBirth, int riderBalance, boolean riderPass, String riderEmail, int riderContact, int recentTicketId, int categoryId, Card card) {
+        this.riderName = riderName;
+        this.riderBirth = riderBirth;
+        this.riderBalance = riderBalance;
+        this.riderPass = riderPass;
+        this.riderEmail = riderEmail;
+        this.riderContact = riderContact;
+        this.recentTicketId = recentTicketId;
+        this.categoryId = categoryId;
+        this.card = card;
+    }
+
+    public Rider(int id, String password, String loginStatus, String riderName, Date riderBirth, int riderBalance, boolean riderPass, String riderEmail, int riderContact, int recentTicketId, int categoryId, Card card) {
+        super(id, password, loginStatus);
+        this.riderName = riderName;
+        this.riderBirth = riderBirth;
+        this.riderBalance = riderBalance;
+        this.riderPass = riderPass;
+        this.riderEmail = riderEmail;
+        this.riderContact = riderContact;
+        this.recentTicketId = recentTicketId;
+        this.categoryId = categoryId;
+        this.card = card;
+    }
+
+    public String getRiderName() {
+        return riderName;
+    }
+
+    public void setRiderName(String riderName) {
+        this.riderName = riderName;
+    }
+
+    public Date getRiderBirth() {
+        return riderBirth;
+    }
+
+    public void setRiderBirth(Date riderBirth) {
+        this.riderBirth = riderBirth;
+    }
+
+    public int getRiderBalance() {
+        return riderBalance;
+    }
+
+    public void setRiderBalance(int riderBalance) {
+        this.riderBalance = riderBalance;
+    }
+
+    public boolean isRiderPass() {
+        return riderPass;
+    }
+
+    public void setRiderPass(boolean riderPass) {
+        this.riderPass = riderPass;
+    }
+
+    public String getRiderEmail() {
+        return riderEmail;
+    }
+
+    public void setRiderEmail(String riderEmail) {
+        this.riderEmail = riderEmail;
+    }
+
+    public int getRiderContact() {
+        return riderContact;
+    }
+
+    public void setRiderContact(int riderContact) {
+        this.riderContact = riderContact;
+    }
+
+    public int getRecentTicketId() {
+        return recentTicketId;
+    }
+
+    public void setRecentTicketId(int recentTicketId) {
+        this.recentTicketId = recentTicketId;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
 }
