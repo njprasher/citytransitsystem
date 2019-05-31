@@ -1,6 +1,7 @@
 package com.transit.users;
 
 import com.transit.card.Card;
+import com.transit.other.DriverType;
 
 import java.util.Date;
 
@@ -87,8 +88,30 @@ public class Rider extends User
         return card;
     }
 
+
     public void setCard(Card card)
     {
         this.card = card;
+    }
+    public void getRoute()
+    {
+        DriverType driverType= DriverType.Brampton;
+    }
+
+
+    @Override
+    public String getDriverName() {
+        }
+
+    @Override
+    public int getDriverPhone() {
+
+        return 5;
+    }
+
+    @Override
+    public String getDriverEmail() {
+
+        return "";
     }
 }
