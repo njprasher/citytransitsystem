@@ -11,5 +11,7 @@ public class TransitMain {
         Rider rider=new Rider();
         Driver driver=new Driver();
 
+        rider.setRiderEmail("vipubskcbkjbcl@gmail.co.in");
+
     }
 }

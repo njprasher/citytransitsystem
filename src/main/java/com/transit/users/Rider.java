@@ -4,6 +4,8 @@ import com.transit.card.Card;
 import com.transit.other.DriverType;
 
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Rider extends User
 {
@@ -73,7 +75,16 @@ public class Rider extends User
     }
 
     public void setRiderEmail(String riderEmail) {
-        this.riderEmail = riderEmail;
+
+        if (isValid(riderEmail))
+        {
+            this.riderEmail = riderEmail;
+
+            System.out.println("Email entered successfully");
+        }
+
+        else System.out.println("Email is Incorrect");
+
     }
 
     public String getRiderContact() {
@@ -88,7 +99,6 @@ public class Rider extends User
         return card;
     }
 
-
     public void setCard(Card card)
     {
         this.card = card;
@@ -99,19 +109,30 @@ public class Rider extends User
     }
 
 
+    public Boolean isValid(String riderEmail)  //https://www.geeksforgeeks.org/check-email-address-valid-not-java/
+    {
+        final Pattern VALID_EMAIL_ADDRESS_REGEX =
+                Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\."+
+                        "[a-zA-Z0-9_+&*-]+)*@" +
+                        "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                        "A-Z]{2,7}$", Pattern.CASE_INSENSITIVE);
+
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(riderEmail);
+        return matcher.find();
+    }
+
     @Override
     public String getDriverName() {
-        }
+        return null;
+    }
 
     @Override
     public int getDriverPhone() {
-
-        return 5;
+        return 0;
     }
 
     @Override
     public String getDriverEmail() {
-
-        return "";
+        return null;
     }
 }
