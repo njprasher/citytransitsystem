@@ -1,6 +1,6 @@
 package com.transit.card;
 
-import com.transit.other.enumDriver;
+import com.transit.other.DriverType;
 
 public class Card
 {
@@ -8,7 +8,7 @@ public class Card
     protected float balance;
     protected boolean riderPass;
 
-    enumDriver enumDriver;
+    DriverType enumDriver;
 
 
 

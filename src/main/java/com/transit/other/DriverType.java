@@ -1,8 +1,10 @@
 package com.transit.other;
 
-public enum  enumDriver {
+public enum DriverType {
 
 
+
+    // Creation of objects of enum class
 
 
     Brampton("Brampton Gateway Terminal","Ray Lawson Blvd",53),
@@ -13,9 +15,10 @@ public enum  enumDriver {
     private final String destination;
     private final int busNumber;
 
-    enumDriver(String starttingLocation, String destination, int busNumber) {
+    DriverType(String starttingLocation, String destination, int busNumber) {
         this.starttingLocation = starttingLocation;
         this.destination = destination;
         this.busNumber = busNumber;
+
     }
 }

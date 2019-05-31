@@ -2,7 +2,7 @@ package com.transit.users;
 
 public class Driver extends User{
 
-    private String driverName;
+    private String driverName="hargun";// hargun
     private String driverEmail;
     private  int driverPhone;
     private static int driverSalary;
@@ -83,8 +83,8 @@ public class Driver extends User{
         setDriverEmail(driverEmail);
         setDriverPhone(driverPhone);
     }
-
-   /* public enum getroute(enum getroutes){
-        return getroute;
+/*
+    public enum getroute(enum getroutes){
+        return ;
     }*/
 }
