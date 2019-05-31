@@ -3,7 +3,10 @@ package com.transit.users;
 import com.transit.card.Card;
 import com.transit.other.DriverType;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -120,6 +123,51 @@ public class Rider extends User
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(riderEmail);
         return matcher.find();
     }
+
+    public void inputRiderData()
+    {
+
+
+        ArrayList<Rider> ac = new ArrayList<Rider>();
+
+        Scanner scan = new Scanner(System.in);
+        boolean isRunning = true;
+
+        while(isRunning){
+            System.out.println("Rider, please enter your name(quit to exit program): ");
+            String riderName = scan.next();
+            if(riderName.equalsIgnoreCase("quit")) {
+                break;
+            }
+                System.out.println("Please enter your Email: "); //add email validation
+                String tempRiderEmail = scan.next();
+
+                if (isValid(tempRiderEmail))
+                {
+                    riderEmail = tempRiderEmail;
+
+                    System.out.println("Email entered Successfully");
+
+                } else
+                    {
+                    System.out.println("Please Enter Correct Email"); //add java gotoStatement
+                    }
+
+            }
+            System.out.println("Please Enter Your Contact Number");
+            String riderContact = scan.next();
+
+            Rider a = new Rider(riderName, riderBirth, riderEmail, riderContact, card);
+            ac.add(a);
+            
+
+        for(Rider t: ac) {
+            System.out.println("Name: " + t.getRiderName() + "\nEmail: " + t.getRiderEmail()+ "\nContact Number: " + t.getRiderContact());
+            System.out.println();
+        }
+
+    }
+
 
     @Override
     public String getDriverName() {
