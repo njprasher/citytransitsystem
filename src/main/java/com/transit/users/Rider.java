@@ -8,11 +8,8 @@ public class Rider extends User
 {
     private String riderName;
     private Date riderBirth;
-    private int riderBalance;
     private String riderEmail;
-    private int riderContact;
-    private int recentTicketId;
-    private int categoryId;
+    private String riderContact;
     private Card card;
 
     public Rider() {
@@ -28,26 +25,29 @@ public class Rider extends User
         super(id, password, loginStatus);
     }
 
-    public Rider(String riderName, Date riderBirth, int riderBalance, String riderEmail, int riderContact, int recentTicketId, int categoryId, Card card) {
+    /**
+     *
+     * @param riderName name of rider
+     * @param riderBirth birth date of rider
+     * @param riderEmail email of rider
+     * @param riderContact phone number of rider
+     * @param card card held by user
+     */
+
+    public Rider(String riderName, Date riderBirth, String riderEmail, String riderContact, Card card) {
         this.riderName = riderName;
         this.riderBirth = riderBirth;
-        this.riderBalance = riderBalance;
         this.riderEmail = riderEmail;
         this.riderContact = riderContact;
-        this.recentTicketId = recentTicketId;
-        this.categoryId = categoryId;
         this.card = card;
     }
 
-    public Rider(int id, String password, String loginStatus, String riderName, Date riderBirth, int riderBalance, String riderEmail, int riderContact, int recentTicketId, int categoryId, Card card) {
+    public Rider(int id, String password, String loginStatus, String riderName, Date riderBirth, String riderEmail, String riderContact, Card card) {
         super(id, password, loginStatus);
         this.riderName = riderName;
         this.riderBirth = riderBirth;
-        this.riderBalance = riderBalance;
         this.riderEmail = riderEmail;
         this.riderContact = riderContact;
-        this.recentTicketId = recentTicketId;
-        this.categoryId = categoryId;
         this.card = card;
     }
 
@@ -67,14 +67,6 @@ public class Rider extends User
         this.riderBirth = riderBirth;
     }
 
-    public int getRiderBalance() {
-        return riderBalance;
-    }
-
-    public void setRiderBalance(int riderBalance) {
-        this.riderBalance = riderBalance;
-    }
-
     public String getRiderEmail() {
         return riderEmail;
     }
@@ -83,28 +75,12 @@ public class Rider extends User
         this.riderEmail = riderEmail;
     }
 
-    public int getRiderContact() {
+    public String getRiderContact() {
         return riderContact;
     }
 
-    public void setRiderContact(int riderContact) {
+    public void setRiderContact(String riderContact) {
         this.riderContact = riderContact;
-    }
-
-    public int getRecentTicketId() {
-        return recentTicketId;
-    }
-
-    public void setRecentTicketId(int recentTicketId) {
-        this.recentTicketId = recentTicketId;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
     }
 
     public Card getCard() {
