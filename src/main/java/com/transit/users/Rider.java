@@ -1,7 +1,7 @@
 package com.transit.users;
 
 import com.transit.card.Card;
-import com.transit.other.DriverType;
+import com.transit.other.Enum_Classes.DriverType;
 
 import java.util.Date;
 
@@ -125,7 +125,7 @@ public class Rider extends User
 
     @Override
     public String getDriverName() {
-        }
+        return "";}
 
     @Override
     public int getDriverPhone() {

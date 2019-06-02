@@ -1,8 +1,11 @@
 package com.transit.users;
 
+import com.transit.other.Enum_Classes.DriverType;
+import com.transit.other.Validation_Classes.ValidateUsers;
+
 public class Driver extends User{
 
-    private String driverName="hargun";// hargun
+    private String driverName;
     private String driverEmail;
     private  int driverPhone;
     private static int driverSalary;
@@ -42,6 +45,7 @@ public class Driver extends User{
     }
 
     public String getDriverEmail() {
+        ValidateUsers.userValidation(driverEmail);
         return driverEmail;
     }
 
@@ -62,7 +66,7 @@ public class Driver extends User{
     }
 
     public void setDriverSalary(int driverSalary) {
-        this.driverSalary = driverSalary;
+        Driver.driverSalary = driverSalary;
     }
 
     public String getDriverBirth() {
@@ -83,8 +87,9 @@ public class Driver extends User{
         setDriverEmail(driverEmail);
         setDriverPhone(driverPhone);
     }
-/*
-    public enum getroute(enum getroutes){
-        return ;
+
+    /*public DriverType neeraj(){
+
+        return DriverType.Brampton;
     }*/
 }
