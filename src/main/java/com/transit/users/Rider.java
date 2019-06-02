@@ -1,19 +1,21 @@
 package com.transit.users;
 
 import com.transit.card.Card;
-import com.transit.other.Enum_Classes.DriverType;
+import com.transit.other.DriverType;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Rider extends User
 {
     private String riderName;
     private Date riderBirth;
-    private int riderBalance;
     private String riderEmail;
-    private int riderContact;
-    private int recentTicketId;
-    private int categoryId;
+    private String riderContact;
     private Card card;
 
     public Rider() {
@@ -29,26 +31,29 @@ public class Rider extends User
         super(id, password, loginStatus);
     }
 
-    public Rider(String riderName, Date riderBirth, int riderBalance, String riderEmail, int riderContact, int recentTicketId, int categoryId, Card card) {
+    /**
+     *
+     * @param riderName name of rider
+     * @param riderBirth birth date of rider
+     * @param riderEmail email of rider
+     * @param riderContact phone number of rider
+     * @param card card held by user
+     */
+
+    public Rider(String riderName, Date riderBirth, String riderEmail, String riderContact, Card card) {
         this.riderName = riderName;
         this.riderBirth = riderBirth;
-        this.riderBalance = riderBalance;
         this.riderEmail = riderEmail;
         this.riderContact = riderContact;
-        this.recentTicketId = recentTicketId;
-        this.categoryId = categoryId;
         this.card = card;
     }
 
-    public Rider(int id, String password, String loginStatus, String riderName, Date riderBirth, int riderBalance, String riderEmail, int riderContact, int recentTicketId, int categoryId, Card card) {
+    public Rider(int id, String password, String loginStatus, String riderName, Date riderBirth, String riderEmail, String riderContact, Card card) {
         super(id, password, loginStatus);
         this.riderName = riderName;
         this.riderBirth = riderBirth;
-        this.riderBalance = riderBalance;
         this.riderEmail = riderEmail;
         this.riderContact = riderContact;
-        this.recentTicketId = recentTicketId;
-        this.categoryId = categoryId;
         this.card = card;
     }
 
@@ -68,50 +73,34 @@ public class Rider extends User
         this.riderBirth = riderBirth;
     }
 
-    public int getRiderBalance() {
-        return riderBalance;
-    }
-
-    public void setRiderBalance(int riderBalance) {
-        this.riderBalance = riderBalance;
-    }
-
     public String getRiderEmail() {
         return riderEmail;
     }
 
     public void setRiderEmail(String riderEmail) {
-        this.riderEmail = riderEmail;
+
+        if (isValid(riderEmail))
+        {
+            this.riderEmail = riderEmail;
+
+            System.out.println("Email entered successfully");
+        }
+
+        else System.out.println("Email is Incorrect");
+
     }
 
-    public int getRiderContact() {
+    public String getRiderContact() {
         return riderContact;
     }
 
-    public void setRiderContact(int riderContact) {
+    public void setRiderContact(String riderContact) {
         this.riderContact = riderContact;
-    }
-
-    public int getRecentTicketId() {
-        return recentTicketId;
-    }
-
-    public void setRecentTicketId(int recentTicketId) {
-        this.recentTicketId = recentTicketId;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
     }
 
     public Card getCard() {
         return card;
     }
-
 
     public void setCard(Card card)
     {
@@ -123,19 +112,75 @@ public class Rider extends User
     }
 
 
+    public Boolean isValid(String riderEmail)  //https://www.geeksforgeeks.org/check-email-address-valid-not-java/
+    {
+        final Pattern VALID_EMAIL_ADDRESS_REGEX =
+                Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\."+
+                        "[a-zA-Z0-9_+&*-]+)*@" +
+                        "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                        "A-Z]{2,7}$", Pattern.CASE_INSENSITIVE);
+
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(riderEmail);
+        return matcher.find();
+    }
+
+    public void inputRiderData()
+    {
+
+
+        ArrayList<Rider> ac = new ArrayList<Rider>();
+
+        Scanner scan = new Scanner(System.in);
+        boolean isRunning = true;
+
+        while(isRunning){
+            System.out.println("Rider, please enter your name(quit to exit program): ");
+            String riderName = scan.next();
+            if(riderName.equalsIgnoreCase("quit")) {
+                break;
+            }
+                System.out.println("Please enter your Email: "); //add email validation
+                String tempRiderEmail = scan.next();
+
+                if (isValid(tempRiderEmail))
+                {
+                    riderEmail = tempRiderEmail;
+
+                    System.out.println("Email entered Successfully");
+
+                } else
+                    {
+                    System.out.println("Please Enter Correct Email"); //add java gotoStatement
+                    }
+
+            }
+            System.out.println("Please Enter Your Contact Number");
+            String riderContact = scan.next();
+
+            Rider a = new Rider(riderName, riderBirth, riderEmail, riderContact, card);
+            ac.add(a);
+            
+
+        for(Rider t: ac) {
+            System.out.println("Name: " + t.getRiderName() + "\nEmail: " + t.getRiderEmail()+ "\nContact Number: " + t.getRiderContact());
+            System.out.println();
+        }
+
+    }
+
+
     @Override
     public String getDriverName() {
-        return "";}
+        return null;
+    }
 
     @Override
     public int getDriverPhone() {
-
-        return 5;
+        return 0;
     }
 
     @Override
     public String getDriverEmail() {
-
-        return "";
+        return null;
     }
 }

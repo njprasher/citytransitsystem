@@ -39,5 +39,20 @@ public class Administrator extends User
     public void setAdminEmail(String adminEmail) {
         this.adminEmail = adminEmail;
     }
+
+    @Override
+    public String getDriverName() {
+        return null;
+    }
+
+    @Override
+    public int getDriverPhone() {
+        return 0;
+    }
+
+    @Override
+    public String getDriverEmail() {
+        return null;
+    }
 }
 
