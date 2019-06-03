@@ -115,7 +115,7 @@ public class Rider extends User
     {
     }
 
-    public void inputRiderData()
+    public void inputRidersDataAndDisplayIt()
     {
 
 
@@ -178,18 +178,69 @@ public class Rider extends User
     }
 
 
-    @Override
-    public String getDriverName() {
-        return null;
+    public void inputRiderData()
+    {
+
+        Scanner scan = new Scanner(System.in);
+        boolean isRunning = true;
+
+        while(isRunning)
+        {
+            System.out.println("Rider, please enter your name(quit to exit program): ");
+            riderName = scan.nextLine();
+            if(riderName.equalsIgnoreCase("quit"))
+
+            {
+                break;
+            }
+
+
+            System.out.println("Please enter your Email: ");
+            String tempRiderEmail = scan.nextLine();
+
+            if (isEmailValid(tempRiderEmail))
+
+            { riderEmail = tempRiderEmail;
+
+                System.out.println("Email entered Successfully");
+
+            } else
+            {
+                System.out.println("Incorrect Email"); //add java gotoStatement
+                riderEmail = "Incorrect Email";
+            }
+
+            System.out.println("Please Enter Your Contact Number");
+
+            String tempRiderContact = scan.nextLine();
+
+            if (isContactNumberValid(tempRiderContact))
+
+            { riderContact = tempRiderContact;
+
+                System.out.println("Contact Number entered Successfully");
+
+            } else
+            {
+                System.out.println("Incorrect Contact Number"); //add java gotoStatement if possible
+                riderContact = "Incorrect Contact Number";
+            }
+
+            isRunning = false;
+        }
     }
 
     @Override
-    public int getDriverPhone() {
-        return 0;
-    }
+    public String Display()
+    {
+        return("----------------------" +
+                "\n-----User Details-----" +
+                "\n----------------------" +
+                "\nName: " + this.getRiderName() +
+                "\nDate of Birth: " + this.getRiderBirth() +
+                "\nEmail: " + this.getRiderEmail() +
+                "\nContact Number: " + this.getRiderContact()
+                );
 
-    @Override
-    public String getDriverEmail() {
-        return null;
     }
 }

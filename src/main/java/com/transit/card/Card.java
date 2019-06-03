@@ -15,9 +15,10 @@ public class Card implements IDisplay
     protected boolean riderPass;
     protected boolean cardStatus;
 
-    private Card()
+    public Card()
     {
-        this.balance = 0;
+        this.balance = 0.0f;
+        this.categoryType = CategoryType.ADULT;
         this.riderPass = false;
         this.cardStatus = true;
     }
@@ -85,22 +86,8 @@ public class Card implements IDisplay
     }
 
     @Override
-    public String getDriverName() {
-        return null;
-    }
-
-    @Override
-    public int getDriverPhone() {
-        return 0;
-    }
-
-    @Override
-    public String getDriverEmail() {
-        return null;
-    }
-
-    @Override
-    public String Display() {
+    public String Display()
+    {
         String riderPass;
         String cardStatus;
         if ( this.isRiderPass() )
@@ -113,7 +100,10 @@ public class Card implements IDisplay
             cardStatus = "Active";
         }else cardStatus = "Inactive";
 
-        return("Card Number: " + this.getCardNumber() +
+        return("----------------------" +
+                "\n-----Card Details-----" +
+                "\n----------------------" +
+                "\nCard Number: " + this.getCardNumber() +
                 "\nBalance: " + this.getBalance()+
                 "\nCategory Type: " + this.getCategoryType()+
                 "\nRider Pass: " + riderPass +
