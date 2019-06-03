@@ -91,7 +91,16 @@ public class Rider extends User
     }
 
     public void setRiderContact(String riderContact) {
-        this.riderContact = riderContact;
+
+        if (isContactNumberValid(riderContact))
+        {
+            this.riderContact = riderContact;
+
+            System.out.println("Contact Number entered successfully");
+        }
+
+        else System.out.println("Contact Number is Incorrect");
+
     }
 
     public Card getCard() {
@@ -142,7 +151,20 @@ public class Rider extends User
                 }
 
             System.out.println("Please Enter Your Contact Number");
-            riderContact = scan.nextLine();
+
+            String tempRiderContact = scan.nextLine();
+
+            if (isContactNumberValid(tempRiderContact))
+
+            { riderContact = tempRiderContact;
+
+                System.out.println("Contact Number entered Successfully");
+
+            } else
+            {
+                System.out.println("Incorrect Contact Number"); //add java gotoStatement if possible
+                riderContact = "Incorrect Contact Number";
+            }
 
             Rider a = new Rider(riderName, riderBirth, riderEmail, riderContact, card);
             riderArrayList.add(a);
