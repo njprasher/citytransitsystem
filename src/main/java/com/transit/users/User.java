@@ -2,6 +2,10 @@ package com.transit.users;
 
 import com.transit.other.IDisplay;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public abstract class User implements IDisplay
 {
     protected int id;
@@ -17,9 +21,9 @@ public abstract class User implements IDisplay
         this.loginStatus = loginStatus;
     }
 
+
     public int getId() {
         return id;
-
     }
 
     public void setId(int id) {
@@ -42,6 +46,16 @@ public abstract class User implements IDisplay
         this.loginStatus = loginStatus;
     }
 
+    public Boolean isValid(String riderEmail)  //https://www.geeksforgeeks.org/check-email-address-valid-not-java/
+    {
+        final Pattern VALID_EMAIL_ADDRESS_REGEX =
+                Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\."+
+                        "[a-zA-Z0-9_+&*-]+)*@" +
+                        "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                        "A-Z]{2,7}$", Pattern.CASE_INSENSITIVE);
 
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(riderEmail);
+        return matcher.find();
+    }
 
 }
