@@ -1,4 +1,4 @@
-package com.transit.other;
+package com.transit.other.Enum_Classes;
 
 public enum DriverType {
 

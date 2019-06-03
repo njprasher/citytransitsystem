@@ -1,6 +1,6 @@
 package com.transit.users;
 
-import com.transit.other.IDisplay;
+import com.transit.other.Interfaces.IDisplay;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -8,9 +8,9 @@ import java.util.regex.Pattern;
 
 public abstract class User implements IDisplay
 {
-    protected int id;
-    protected String password;
-    protected String loginStatus;
+    private int id;
+    private String password;
+    private String loginStatus;
 
     public User(){
     }
