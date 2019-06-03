@@ -1,10 +1,8 @@
 package com.transit.other.Interfaces;
 
-public interface IDisplay {
-
-    String getDriverName();
-    int getDriverPhone();
-    String getDriverEmail();
-
-    String Display();
+public interface IDisplay
+{
+    default public String Display(){
+     return "No such method defined";
+    }
 }
