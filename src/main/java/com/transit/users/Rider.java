@@ -1,10 +1,14 @@
 package com.transit.users;
 
 import com.transit.card.Card;
+import com.transit.other.DriverType;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Rider extends User
 {
@@ -75,7 +79,7 @@ public class Rider extends User
 
     public void setRiderEmail(String riderEmail) {
 
-        if (isEmailValid(riderEmail))
+        if (isValid(riderEmail))
         {
             this.riderEmail = riderEmail;
 
@@ -91,16 +95,7 @@ public class Rider extends User
     }
 
     public void setRiderContact(String riderContact) {
-
-        if (isContactNumberValid(riderContact))
-        {
-            this.riderContact = riderContact;
-
-            System.out.println("Contact Number entered successfully");
-        }
-
-        else System.out.println("Contact Number is Incorrect");
-
+        this.riderContact = riderContact;
     }
 
     public Card getCard() {
@@ -113,134 +108,79 @@ public class Rider extends User
     }
     public void getRoute()
     {
+        DriverType driverType= DriverType.Brampton;
     }
 
-    public void inputRidersDataAndDisplayIt()
+
+    public Boolean isValid(String riderEmail)  //https://www.geeksforgeeks.org/check-email-address-valid-not-java/
     {
+        final Pattern VALID_EMAIL_ADDRESS_REGEX =
+                Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\."+
+                        "[a-zA-Z0-9_+&*-]+)*@" +
+                        "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                        "A-Z]{2,7}$", Pattern.CASE_INSENSITIVE);
 
-
-        ArrayList<Rider> riderArrayList = new ArrayList<>();
-
-        Scanner scan = new Scanner(System.in);
-        boolean isRunning = true;
-
-        while(isRunning)
-        {
-            System.out.println("Rider, please enter your name(quit to exit program): ");
-            riderName = scan.nextLine();
-            if(riderName.equalsIgnoreCase("quit"))
-
-            {
-                break;
-            }
-
-
-            System.out.println("Please enter your Email: ");
-            String tempRiderEmail = scan.nextLine();
-
-            if (isEmailValid(tempRiderEmail))
-
-            { riderEmail = tempRiderEmail;
-
-                System.out.println("Email entered Successfully");
-
-            } else
-                {
-                    System.out.println("Incorrect Email"); //add java gotoStatement
-                    riderEmail = "Incorrect Email";
-                }
-
-            System.out.println("Please Enter Your Contact Number");
-
-            String tempRiderContact = scan.nextLine();
-
-            if (isContactNumberValid(tempRiderContact))
-
-            { riderContact = tempRiderContact;
-
-                System.out.println("Contact Number entered Successfully");
-
-            } else
-            {
-                System.out.println("Incorrect Contact Number"); //add java gotoStatement if possible
-                riderContact = "Incorrect Contact Number";
-            }
-
-            Rider a = new Rider(riderName, riderBirth, riderEmail, riderContact, card);
-            riderArrayList.add(a);
-
-
-            for(Rider t: riderArrayList) {
-            System.out.println("Name: " + t.getRiderName() + "\nEmail: " + t.getRiderEmail()+ "\nContact Number: " + t.getRiderContact());
-            System.out.println();
-            }
-        }
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(riderEmail);
+        return matcher.find();
     }
-
 
     public void inputRiderData()
     {
 
+
+        ArrayList<Rider> ac = new ArrayList<Rider>();
+
         Scanner scan = new Scanner(System.in);
         boolean isRunning = true;
 
-        while(isRunning)
-        {
+        while(isRunning){
             System.out.println("Rider, please enter your name(quit to exit program): ");
-            riderName = scan.nextLine();
-            if(riderName.equalsIgnoreCase("quit"))
-
-            {
+            String riderName = scan.next();
+            if(riderName.equalsIgnoreCase("quit")) {
                 break;
             }
+                System.out.println("Please enter your Email: "); //add email validation
+                String tempRiderEmail = scan.next();
 
+                if (isValid(tempRiderEmail))
+                {
+                    riderEmail = tempRiderEmail;
 
-            System.out.println("Please enter your Email: ");
-            String tempRiderEmail = scan.nextLine();
+                    System.out.println("Email entered Successfully");
 
-            if (isEmailValid(tempRiderEmail))
+                } else
+                    {
+                    System.out.println("Please Enter Correct Email"); //add java gotoStatement
+                    }
 
-            { riderEmail = tempRiderEmail;
-
-                System.out.println("Email entered Successfully");
-
-            } else
-            {
-                System.out.println("Incorrect Email"); //add java gotoStatement
-                riderEmail = "Incorrect Email";
             }
-
             System.out.println("Please Enter Your Contact Number");
+            String riderContact = scan.next();
 
-            String tempRiderContact = scan.nextLine();
+            Rider a = new Rider(riderName, riderBirth, riderEmail, riderContact, card);
+            ac.add(a);
+            
 
-            if (isContactNumberValid(tempRiderContact))
-
-            { riderContact = tempRiderContact;
-
-                System.out.println("Contact Number entered Successfully");
-
-            } else
-            {
-                System.out.println("Incorrect Contact Number"); //add java gotoStatement if possible
-                riderContact = "Incorrect Contact Number";
-            }
-
-            isRunning = false;
+        for(Rider t: ac) {
+            System.out.println("Name: " + t.getRiderName() + "\nEmail: " + t.getRiderEmail()+ "\nContact Number: " + t.getRiderContact());
+            System.out.println();
         }
+
+    }
+
+
+    @Override
+    public String getDriverName() {
+        return null;
     }
 
     @Override
-    public String Display()
-    {
-        return("----------------------" +
-                "\n-----User Details-----" +
-                "\n----------------------" +
-                "\nName: " + this.getRiderName() +
-                "\nDate of Birth: " + this.getRiderBirth() +
-                "\nEmail: " + this.getRiderEmail() +
-                "\nContact Number: " + this.getRiderContact()
-                );
+    public int getDriverPhone() {
+        return 0;
+    }
 
+    @Override
+    public String getDriverEmail() {
+        return null;
     }
 }

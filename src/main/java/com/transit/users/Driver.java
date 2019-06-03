@@ -1,15 +1,15 @@
 package com.transit.users;
 
-import com.transit.other.Enum_Classes.DriverType;
 import com.transit.other.Validation_Classes.ValidateUsers;
 
 public class Driver extends User{
 
     private String driverName;
     private String driverEmail;
-    private  int driverPhone;
+    private  String driverPhone;
     private static int driverSalary;
     private String driverBirth;
+    private ValidateUsers validateUsers;
 
 
     public Driver() {
@@ -24,7 +24,7 @@ public class Driver extends User{
      * @param driverBirth Displays Birthdate of driver to find the retired date .
      *
      */
-    public Driver(String driverName, String driverEmail, int driverPhone, int driverSalary, String driverBirth) {
+    public Driver(String driverName, String driverEmail, String driverPhone, int driverSalary, String driverBirth) {
         this.driverName = driverName;
         this.driverEmail = driverEmail;
         this.driverPhone = driverPhone;
@@ -45,23 +45,26 @@ public class Driver extends User{
     }
 
     public String getDriverEmail() {
-        ValidateUsers.userValidation(driverEmail);
+        validateUsers.isValidEmailAddress(this.driverEmail);
         return driverEmail;
     }
 
     public void setDriverEmail(String driverEmail) {
         this.driverEmail = driverEmail;
+        validateUsers.isValidEmailAddress(this.driverEmail);
+
     }
 
-    public int getDriverPhone() {
+    public String getDriverPhone() {
         return driverPhone;
     }
 
-    public void setDriverPhone(int driverPhone) {
+    public void setDriverPhone(String driverPhone) {
         this.driverPhone = driverPhone;
     }
 
     public int getDriverSalary() {
+        validateUsers.validateMobileNumber(this.driverPhone);
         return driverSalary;
     }
 
@@ -81,12 +84,15 @@ public class Driver extends User{
     // Functions of Driver Class
 
 
-    public void updateProfile(String driverName, String driverEmail, int driverPhone)
+    public void updateProfile(String driverName, String driverEmail, String driverPhone)
     {
         setDriverName(driverName);
         setDriverEmail(driverEmail);
         setDriverPhone(driverPhone);
     }
+
+
+
 
     /*public DriverType neeraj(){
 

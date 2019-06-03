@@ -18,12 +18,14 @@ public class Administrator extends User
         this.adminName = adminName;
         this.adminEmail = adminEmail;
     }
+
+    /*
     public Administrator(int id,String password,String loginStatus){
     this.id=id;
     this.password=password;
     this.loginStatus=loginStatus;
     }
-
+*/
     public String getAdminName() {
         return adminName;
     }
@@ -46,7 +48,7 @@ public class Administrator extends User
     }
 
     @Override
-    public int getDriverPhone() {
+    public String getDriverPhone() {
         return 0;
     }
 
