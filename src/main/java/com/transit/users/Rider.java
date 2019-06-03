@@ -1,13 +1,10 @@
 package com.transit.users;
 
 import com.transit.card.Card;
-import com.transit.other.DriverType;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Rider extends User
 {
@@ -78,7 +75,7 @@ public class Rider extends User
 
     public void setRiderEmail(String riderEmail) {
 
-        if (isValid(riderEmail))
+        if (isEmailValid(riderEmail))
         {
             this.riderEmail = riderEmail;
 
@@ -107,7 +104,6 @@ public class Rider extends User
     }
     public void getRoute()
     {
-        DriverType driverType= DriverType.Brampton;
     }
 
     public void inputRiderData()
@@ -133,7 +129,7 @@ public class Rider extends User
             System.out.println("Please enter your Email: ");
             String tempRiderEmail = scan.nextLine();
 
-            if (isValid(tempRiderEmail))
+            if (isEmailValid(tempRiderEmail))
 
             { riderEmail = tempRiderEmail;
 

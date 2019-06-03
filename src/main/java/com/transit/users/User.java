@@ -46,7 +46,7 @@ public abstract class User implements IDisplay
         this.loginStatus = loginStatus;
     }
 
-    public Boolean isValid(String riderEmail)  //https://www.geeksforgeeks.org/check-email-address-valid-not-java/
+    public Boolean isEmailValid(String riderEmail)  //https://www.geeksforgeeks.org/check-email-address-valid-not-java/
     {
         final Pattern VALID_EMAIL_ADDRESS_REGEX =
                 Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\."+
