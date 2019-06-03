@@ -3,7 +3,6 @@ package com.transit.users;
 import com.transit.card.Card;
 import com.transit.other.DriverType;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -111,61 +110,53 @@ public class Rider extends User
         DriverType driverType= DriverType.Brampton;
     }
 
-
-    public Boolean isValid(String riderEmail)  //https://www.geeksforgeeks.org/check-email-address-valid-not-java/
-    {
-        final Pattern VALID_EMAIL_ADDRESS_REGEX =
-                Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\."+
-                        "[a-zA-Z0-9_+&*-]+)*@" +
-                        "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                        "A-Z]{2,7}$", Pattern.CASE_INSENSITIVE);
-
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(riderEmail);
-        return matcher.find();
-    }
-
     public void inputRiderData()
     {
 
 
-        ArrayList<Rider> ac = new ArrayList<Rider>();
+        ArrayList<Rider> riderArrayList = new ArrayList<>();
 
         Scanner scan = new Scanner(System.in);
         boolean isRunning = true;
 
-        while(isRunning){
+        while(isRunning)
+        {
             System.out.println("Rider, please enter your name(quit to exit program): ");
-            String riderName = scan.next();
-            if(riderName.equalsIgnoreCase("quit")) {
+            riderName = scan.nextLine();
+            if(riderName.equalsIgnoreCase("quit"))
+
+            {
                 break;
             }
-                System.out.println("Please enter your Email: "); //add email validation
-                String tempRiderEmail = scan.next();
 
-                if (isValid(tempRiderEmail))
+
+            System.out.println("Please enter your Email: ");
+            String tempRiderEmail = scan.nextLine();
+
+            if (isValid(tempRiderEmail))
+
+            { riderEmail = tempRiderEmail;
+
+                System.out.println("Email entered Successfully");
+
+            } else
                 {
-                    riderEmail = tempRiderEmail;
+                    System.out.println("Incorrect Email"); //add java gotoStatement
+                    riderEmail = "Incorrect Email";
+                }
 
-                    System.out.println("Email entered Successfully");
-
-                } else
-                    {
-                    System.out.println("Please Enter Correct Email"); //add java gotoStatement
-                    }
-
-            }
             System.out.println("Please Enter Your Contact Number");
-            String riderContact = scan.next();
+            riderContact = scan.nextLine();
 
             Rider a = new Rider(riderName, riderBirth, riderEmail, riderContact, card);
-            ac.add(a);
-            
+            riderArrayList.add(a);
 
-        for(Rider t: ac) {
+
+            for(Rider t: riderArrayList) {
             System.out.println("Name: " + t.getRiderName() + "\nEmail: " + t.getRiderEmail()+ "\nContact Number: " + t.getRiderContact());
             System.out.println();
+            }
         }
-
     }
 
 
