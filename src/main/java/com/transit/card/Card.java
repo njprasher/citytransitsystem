@@ -1,6 +1,8 @@
 package com.transit.card;
 
-public class Card
+import com.transit.other.Interfaces.IDisplay;
+
+public class Card implements IDisplay
 {
     protected enum CategoryType
     {
@@ -81,4 +83,42 @@ public class Card
     {
         this.setCardStatus(false);
     }
+
+    @Override
+    public String getDriverName() {
+        return null;
+    }
+
+    @Override
+    public int getDriverPhone() {
+        return 0;
+    }
+
+    @Override
+    public String getDriverEmail() {
+        return null;
+    }
+
+    @Override
+    public String Display() {
+        String riderPass;
+        String cardStatus;
+        if ( this.isRiderPass() )
+        {
+            riderPass = "Active";
+        }else riderPass ="Inactive";
+
+        if ( this.isCardStatus() )
+        {
+            cardStatus = "Active";
+        }else cardStatus = "Inactive";
+
+        return("Card Number: " + this.getCardNumber() +
+                "\nBalance: " + this.getBalance()+
+                "\nCategory Type: " + this.getCategoryType()+
+                "\nRider Pass: " + riderPass +
+                "\nCard Status " + cardStatus
+                );
+    }
+
 }
