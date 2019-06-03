@@ -1,7 +1,11 @@
 package com.transit.users;
 
 import com.transit.card.Card;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -27,6 +31,14 @@ public class Rider extends User
         super(id, password, loginStatus);
     }
 
+    public Rider(String riderName, Date riderBirth, String riderEmail, String riderContact, Card card) {
+        this.riderName = riderName;
+        this.riderBirth = riderBirth;
+        this.riderEmail = riderEmail;
+        this.riderContact = riderContact;
+        this.card = card;
+    }
+
     /**
      *
      * @param riderName name of rider
@@ -35,14 +47,6 @@ public class Rider extends User
      * @param riderContact phone number of rider
      * @param card card held by user
      */
-
-    public Rider(String riderName, Date riderBirth, String riderEmail, String riderContact, Card card) {
-        this.riderName = riderName;
-        this.riderBirth = riderBirth;
-        this.riderEmail = riderEmail;
-        this.riderContact = riderContact;
-        this.card = card;
-    }
 
     public Rider(int id, String password, String loginStatus, String riderName, Date riderBirth, String riderEmail, String riderContact, Card card) {
         super(id, password, loginStatus);
@@ -227,6 +231,32 @@ public class Rider extends User
             }
 
             isRunning = false;
+        }
+    }
+
+    public void writeRiderDetailsToFile()
+    {
+        JSONObject riderDetails = new JSONObject();
+        riderDetails.put("firstName", this.riderName);
+        riderDetails.put("birth", this.riderBirth);
+        riderDetails.put("email", this.riderEmail);
+        riderDetails.put("contact", this.riderContact);
+
+        JSONObject riderObject = new JSONObject();
+        riderObject.put("rider", riderDetails);
+
+        //Add employees to list
+        JSONArray employeeList = new JSONArray();
+        employeeList.add(riderObject);
+
+        //Write JSON file
+        try (FileWriter file = new FileWriter("riders.json")) {
+
+            file.write(employeeList.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
