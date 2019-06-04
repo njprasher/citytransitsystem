@@ -1,5 +1,7 @@
 package com.transit.users;
 
+import java.util.Scanner;
+
 public class Administrator extends User
 {
     private String adminName;
@@ -12,7 +14,7 @@ public class Administrator extends User
     /**
      *
      * @param adminName display the name of administrator
-     * @param adminEmail display driver's email  
+     * @param adminEmail display admin email
      */
     public Administrator( String adminName,String adminEmail) {
         this.adminName = adminName;
@@ -42,19 +44,46 @@ public class Administrator extends User
         this.adminEmail = adminEmail;
     }
 
-    @Override
-    public String getDriverName() {
-        return null;
+    public void inputAdminData()
+    {
+
+        Scanner scan = new Scanner(System.in);
+        boolean isRunning = true;
+
+        while(isRunning)
+        {
+            System.out.println("Admin, please enter your name(quit to exit program): ");
+            String tempAdminName = scan.nextLine();
+            if(tempAdminName.equalsIgnoreCase("quit"))
+            {
+                break;
+            }else adminName = tempAdminName;
+
+
+            System.out.println("Please enter your Email: ");
+            String tempAdminEmail = scan.nextLine();
+
+            if (isEmailValid(tempAdminEmail))
+
+            { adminEmail = tempAdminEmail;
+
+                System.out.println("Email entered Successfully");
+
+            } else
+            {
+                System.out.println("Incorrect Email"); //add java gotoStatement
+                adminEmail = null;
+            }
+
+            isRunning = false;
+        }
     }
 
     @Override
-    public String getDriverPhone() {
-        return 0;
-    }
-
-    @Override
-    public String getDriverEmail() {
+    public String Display()
+    {
         return null;
+
     }
 }
 
