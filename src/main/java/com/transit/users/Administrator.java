@@ -1,5 +1,15 @@
 package com.transit.users;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Administrator extends User
@@ -76,6 +86,32 @@ public class Administrator extends User
             }
 
             isRunning = false;
+        }
+    }
+
+
+    public void writeAdminDetailsToFile()
+    {
+        JSONObject adminDetails = new JSONObject();
+
+        adminDetails.put("adminName", this.adminName);
+        adminDetails.put("adminEmail", this.adminEmail);
+
+        JSONObject adminObject = new JSONObject();
+        adminObject.put("admins", adminDetails);
+
+        //Add admins to list
+        JSONArray adminList = new JSONArray();
+        adminList.add(adminObject);
+
+        //Write JSON file
+        try (FileWriter file = new FileWriter("admins.json")) {
+
+            file.write(adminList.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
