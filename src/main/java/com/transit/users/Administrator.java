@@ -115,6 +115,42 @@ public class Administrator extends User
         }
     }
 
+    public void readAdminDetailsFromFile() {
+
+        JSONParser jsonParser = new JSONParser();
+
+        try (FileReader reader = new FileReader("admins.json")) {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+
+            JSONArray adminList = (JSONArray) obj;
+
+            //Iterate over array
+            adminList.forEach(admin -> parseAdminObject((JSONObject) admin));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
+    private void parseAdminObject(JSONObject admin)
+    {
+        //Get rider object within list
+        JSONObject adminObject = (JSONObject) admin.get("admins");
+
+        String adminName = (String) adminObject.get("adminName");
+        this.setAdminName(adminName);
+
+        String adminEmail = (String) adminObject.get("adminEmail");
+        this.setAdminEmail(adminEmail);
+
+    }
+
+
     @Override
     public String Display()
     {
