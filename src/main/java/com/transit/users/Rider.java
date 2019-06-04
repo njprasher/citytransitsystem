@@ -177,12 +177,11 @@ public class Rider extends User
         while(isRunning)
         {
             System.out.println("Rider, please enter your name(quit to exit program): ");
-            riderName = scan.nextLine();
-            if(riderName.equalsIgnoreCase("quit"))
-
+            String tempRiderName = scan.nextLine();
+            if(tempRiderName.equalsIgnoreCase("quit"))
             {
                 break;
-            }
+            }else riderName = tempRiderName;
 
 
             System.out.println("Please enter your Email: ");
@@ -197,7 +196,7 @@ public class Rider extends User
             } else
             {
                 System.out.println("Incorrect Email"); //add java gotoStatement
-                riderEmail = "Incorrect Email";
+                riderEmail = null;
             }
 
             System.out.println("Please Enter Your Contact Number");
@@ -213,7 +212,7 @@ public class Rider extends User
             } else
             {
                 System.out.println("Incorrect Contact Number"); //add java gotoStatement if possible
-                riderContact = "Incorrect Contact Number";
+                riderContact = null;
             }
 
             isRunning = false;
