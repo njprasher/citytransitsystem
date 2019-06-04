@@ -1,6 +1,11 @@
 package com.transit.card;
 
 import com.transit.other.Interfaces.IDisplay;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Card implements IDisplay
 {
@@ -22,6 +27,15 @@ public class Card implements IDisplay
         this.riderPass = false;
         this.cardStatus = true;
     }
+
+    /**
+     *
+     * @param cardNumber stores the unique identification number of card
+     * @param balance stores the current balance of the card
+     * @param categoryType stores the category type of card as per user i.e it can be ADULT/STUDENT/SENIOR/YOUNG/CHILD
+     * @param riderPass describes if there is a pass loaded on the card or not
+     * @param cardStatus describes if the card is active or inactive
+     */
 
     public Card(int cardNumber, float balance, CategoryType categoryType, boolean riderPass, boolean cardStatus) {
         this.cardNumber = cardNumber;
@@ -84,6 +98,35 @@ public class Card implements IDisplay
     {
         this.setCardStatus(false);
     }
+
+    public void writeCardDetailsToFile()
+    {
+        JSONObject cardDetails = new JSONObject();
+
+        cardDetails.put("cardNumber", this.cardNumber);
+        cardDetails.put("balance", this.balance);
+        cardDetails.put("categoryType", this.categoryType);
+        cardDetails.put("riderPass", this.riderPass);
+        cardDetails.put("cardStatus", this.cardStatus);
+
+        JSONObject cardObject = new JSONObject();
+        cardObject.put("cards", cardDetails);
+
+        //Add cards to list
+        JSONArray cardList = new JSONArray();
+        cardList.add(cardObject);
+
+        //Write JSON file
+        try (FileWriter file = new FileWriter("cards.json")) {
+
+            file.write(cardList.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public String Display()
