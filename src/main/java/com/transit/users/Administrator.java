@@ -154,7 +154,12 @@ public class Administrator extends User
     @Override
     public String Display()
     {
-        return null;
+        return("----------------------" +
+                "\n-----Admin Details-----" +
+                "\n----------------------" +
+                "\nName: " + this.getAdminName() +
+                "\nEmail: " + this.getAdminEmail()
+        );
 
     }
 }
