@@ -22,7 +22,7 @@ public class UserSingleton
         return userObject;
     }
 
-    public void addStudent(User user)
+    public void addUser(User user)
     {
         if( user != null) {
 
@@ -30,8 +30,25 @@ public class UserSingleton
         }
     }
 
-    public User getStudent(int id)
+    public User getUser(int id)
     {
         return integerUserHashMap.get(id);
     }
+
+    
+
+    public boolean verifyUser(int key, String value)
+    {
+        boolean verify = false;
+
+        if ( integerUserHashMap.containsKey(key) )
+        {
+            if ( integerUserHashMap.containsValue(value) )
+            {
+                verify = true;
+            }
+        }
+        return(verify);
+    }
+
 }
