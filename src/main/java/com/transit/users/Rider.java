@@ -3,7 +3,11 @@ package com.transit.users;
 import com.transit.card.Card;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -78,16 +82,7 @@ public class Rider extends User
     }
 
     public void setRiderEmail(String riderEmail) {
-
-        if (isEmailValid(riderEmail))
-        {
-            this.riderEmail = riderEmail;
-
-            System.out.println("Email entered successfully");
-        }
-
-        else System.out.println("Email is Incorrect");
-
+        this.riderEmail = riderEmail;
     }
 
     public String getRiderContact() {
@@ -95,16 +90,7 @@ public class Rider extends User
     }
 
     public void setRiderContact(String riderContact) {
-
-        if (isContactNumberValid(riderContact))
-        {
-            this.riderContact = riderContact;
-
-            System.out.println("Contact Number entered successfully");
-        }
-
-        else System.out.println("Contact Number is Incorrect");
-
+        this.riderContact = riderContact;
     }
 
     public Card getCard() {
@@ -237,27 +223,69 @@ public class Rider extends User
     public void writeRiderDetailsToFile()
     {
         JSONObject riderDetails = new JSONObject();
-        riderDetails.put("firstName", this.riderName);
-        riderDetails.put("birth", this.riderBirth);
-        riderDetails.put("email", this.riderEmail);
-        riderDetails.put("contact", this.riderContact);
+
+        riderDetails.put("riderName", this.riderName);
+        riderDetails.put("riderBirth", this.riderBirth);
+        riderDetails.put("riderEmail", this.riderEmail);
+        riderDetails.put("riderContact", this.riderContact);
 
         JSONObject riderObject = new JSONObject();
-        riderObject.put("rider", riderDetails);
+        riderObject.put("riders", riderDetails);
 
-        //Add employees to list
-        JSONArray employeeList = new JSONArray();
-        employeeList.add(riderObject);
+        //Add riders to list
+        JSONArray riderList = new JSONArray();
+        riderList.add(riderObject);
 
         //Write JSON file
         try (FileWriter file = new FileWriter("riders.json")) {
 
-            file.write(employeeList.toJSONString());
+            file.write(riderList.toJSONString());
             file.flush();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void readRiderDetailsFromFile() {
+
+        JSONParser jsonParser = new JSONParser();
+
+        try (FileReader reader = new FileReader("riders.json")) {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+
+            JSONArray riderList = (JSONArray) obj;
+
+            //Iterate over array
+            riderList.forEach(rider -> parseRiderObject((JSONObject) rider));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
+    private void parseRiderObject(JSONObject rider)
+    {
+        //Get rider object within list
+        JSONObject riderObject = (JSONObject) rider.get("riders");
+
+        String riderName = (String) riderObject.get("riderName");
+        this.setRiderName(riderName);
+
+        Date riderBirth = (Date) riderObject.get("riderBirth");
+        this.setRiderBirth(riderBirth);
+
+        String riderEmail = (String) riderObject.get("riderEmail");
+        this.setRiderEmail(riderEmail);
+
+        String riderContact = (String) riderObject.get("riderContact");
+        this.setRiderContact(riderContact);
+
     }
 
     @Override
