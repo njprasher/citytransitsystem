@@ -3,9 +3,14 @@ package com.transit.card;
 import com.transit.other.Interfaces.IDisplay;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 
 public class Card implements IDisplay
 {
@@ -126,6 +131,52 @@ public class Card implements IDisplay
             e.printStackTrace();
         }
     }
+
+
+    public void readCardDetailsFromFile() {
+
+        JSONParser jsonParser = new JSONParser();
+
+        try (FileReader reader = new FileReader("cards.json")) {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+
+            JSONArray cardList = (JSONArray) obj;
+
+            //Iterate over array
+            cardList.forEach(card -> parseCardObject((JSONObject) card));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
+    private void parseCardObject(JSONObject card)
+    {
+        //Get card object within list
+        JSONObject cardObject = (JSONObject) card.get("cards");
+
+        int cardNumber = (int) cardObject.get("cardNumber");
+        this.setCardNumber(cardNumber);
+
+        float balance = (float) cardObject.get("balance");
+        this.setBalance(balance);
+
+        CategoryType categoryType = (CategoryType) cardObject.get("categoryType");
+        this.setCategoryType(categoryType);
+
+        boolean riderPass = (boolean) cardObject.get("riderPass");
+        this.setRiderPass(riderPass);
+
+        boolean cardStatus = (boolean) cardObject.get("cardStatus");
+        this.setCardStatus(cardStatus);
+
+    }
+
 
 
     @Override
