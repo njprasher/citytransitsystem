@@ -30,12 +30,19 @@ public class UserSingleton
         }
     }
 
-    public User getUser(int id)
+    public User getUserbyId(int id)
     {
         return integerUserHashMap.get(id);
     }
 
-    
+    public boolean deleteUserById(int id)
+    {
+        if (integerUserHashMap.containsKey(id))
+        {
+            integerUserHashMap.remove(id);
+            return true;
+        }else return false;
+    }
 
     public boolean verifyUser(int key, String value)
     {
